@@ -173,8 +173,6 @@ plotly.offline.plot(fig, filename='candlestick.html')
 print(f"GENERATED CHART: {candlestick_filepath}")
 print("-------------------------")
 
-plotly.tools.set_credentials_file(username='kms923', api_key='28X77R0cm1ATCaYZGbbY')
-
 api_key = os.environ.get("ALPHAVANTAGE_API_KEY")
 
 request_url = f"https://www.alphavantage.co/query?function=SECTOR&apikey={api_key}"
