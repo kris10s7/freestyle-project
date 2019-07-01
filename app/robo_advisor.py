@@ -187,201 +187,32 @@ one_month = parsed_response["Rank D: 1 Month Performance"]
 three_month = parsed_response["Rank E: 3 Month Performance"]
 YTD = parsed_response["Rank F: Year-to-Date (YTD) Performance"]
 
-#removing % from string: https://stackoverflow.com/questions/3939361/remove-specific-characters-from-a-string-in-python
+## removing the "%" and creating new dictionaries
+w = one_day.values()
+w = [s.strip('%') for s in w]
+one_day_dict = dict(zip(one_day.keys(),map(float,w))) 
+  
+x = one_month.values()
+x = [s.strip('%') for s in x]
+one_month_dict = dict(zip(one_month.keys(),map(float,x)))
 
+y = three_month.values()
+y = [s.strip('%') for s in y]
+three_month_dict = dict(zip(three_month.keys(),map(float,y)))
+
+z = YTD.values()
+z = [s.strip('%') for s in z]
+YTD_dict = dict(zip(YTD.keys(),map(float,z)))
+
+  # How to remove a character from a list of strings: https://stackoverflow.com/questions/8282553/removing-character-in-list-of-strings
+  # How to remove convert two lists into a dictionary: https://therenegadecoder.com/code/how-to-convert-two-lists-into-a-dictionary-in-python/
+  # How to converting list of strings to float: https://stackoverflow.com/questions/1614236/in-python-how-do-i-convert-all-of-the-items-in-a-list-to-floats
 
 ##creating performance chart for all sectors
 
-#Communication services (Comm_services) variables
-a = list(one_day['Communication Services'])
-a.remove('%')
-one_day_converted_comm_svcs = float("".join(a))
-
-b = list(one_month['Communication Services'])
-b.remove('%')
-one_month_converted_comm_svcs = float("".join(b))
-
-c = list(three_month['Communication Services'])
-c.remove('%')
-three_month_converted_comm_svcs = float("".join(c))
-
-d = list(YTD['Communication Services'])
-d.remove('%')
-YTD_converted_comm_svcs = float("".join(d))
-
-#consumer discretionary (CD) variables
-e = list(one_day['Consumer Discretionary'])
-e.remove('%')
-one_day_converted_CD = float("".join(e))
-
-f = list(one_month['Consumer Discretionary'])
-f.remove('%')
-one_month_converted_CD = float("".join(f))
-
-g = list(three_month['Consumer Discretionary'])
-g.remove('%')
-three_month_converted_CD = float("".join(g))
-
-h = list(YTD['Consumer Discretionary'])
-h.remove('%')
-YTD_converted_CD = float("".join(h))
-
-#consumer staples (cons_staples) variables
-i = list(one_day['Consumer Staples'])
-i.remove('%')
-one_day_converted_cons_staples = float("".join(i))
-
-j = list(one_month['Consumer Staples'])
-j.remove('%')
-one_month_converted_cons_staples = float("".join(j))
-
-k = list(three_month['Consumer Staples'])
-k.remove('%')
-three_month_converted_cons_staples = float("".join(k))
-
-l = list(YTD['Consumer Staples'])
-l.remove('%')
-YTD_converted_cons_staples = float("".join(l))
-
-#Financials variables
-m = list(one_day['Financials'])
-m.remove('%')
-one_day_converted_financials = float("".join(m))
-
-n = list(one_month['Financials'])
-n.remove('%')
-one_month_converted_financials = float("".join(n))
-
-o = list(three_month['Financials'])
-o.remove('%')
-three_month_converted_financials = float("".join(o))
-
-p = list(YTD['Financials'])
-p.remove('%')
-YTD_converted_financials = float("".join(p))
-
-#energy variables
-q = list(one_day['Energy'])
-q.remove('%')
-one_day_converted_energy = float("".join(q))
-
-r = list(one_month['Energy'])
-r.remove('%')
-one_month_converted_energy = float("".join(r))
-
-s = list(three_month['Energy'])
-s.remove('%')
-three_month_converted_energy = float("".join(s))
-
-t = list(YTD['Energy'])
-t.remove('%')
-YTD_converted_energy = float("".join(t))
-
-#health care variables
-u = list(one_day['Health Care'])
-u.remove('%')
-one_day_converted_health_care = float("".join(u))
-
-v = list(one_month['Health Care'])
-v.remove('%')
-one_month_converted_health_care = float("".join(v))
-
-w = list(three_month['Health Care'])
-w.remove('%')
-three_month_converted_health_care = float("".join(w))
-
-x = list(YTD['Health Care'])
-x.remove('%')
-YTD_converted_health_care = float("".join(x))
-
-#Industrials variables
-y = list(one_day['Industrials'])
-y.remove('%')
-one_day_converted_industrials = float("".join(y))
-
-z = list(one_month['Industrials'])
-z.remove('%')
-one_month_converted_industrials = float("".join(z))
-
-aa = list(three_month['Industrials'])
-aa.remove('%')
-three_month_converted_industrials = float("".join(aa))
-
-bb = list(YTD['Industrials'])
-bb.remove('%')
-YTD_converted_industrials = float("".join(bb))
-
-#Information Technology (IT) variables
-cc = list(one_day['Information Technology'])
-cc.remove('%')
-one_day_converted_IT = float("".join(cc))
-
-dd = list(one_month['Information Technology'])
-dd.remove('%')
-one_month_converted_IT = float("".join(dd))
-
-ee = list(three_month['Information Technology'])
-ee.remove('%')
-three_month_converted_IT = float("".join(ee))
-
-ff = list(YTD['Information Technology'])
-ff.remove('%')
-YTD_converted_IT = float("".join(ff))
-
-#Materials variables
-gg = list(one_day['Materials'])
-gg.remove('%')
-one_day_converted_materials = float("".join(gg))
-
-hh = list(one_month['Materials'])
-hh.remove('%')
-one_month_converted_materials = float("".join(hh))
-
-ii = list(three_month['Materials'])
-ii.remove('%')
-three_month_converted_materials = float("".join(ii))
-
-jj = list(YTD['Materials'])
-jj.remove('%')
-YTD_converted_materials = float("".join(jj))
-
-#real estate (RE) variables
-kk = list(one_day['Real Estate'])
-kk.remove('%')
-one_day_converted_real_estate = float("".join(kk))
-
-ll = list(one_month['Real Estate'])
-ll.remove('%')
-one_month_converted_real_estate = float("".join(ll))
-
-mm = list(three_month['Real Estate'])
-mm.remove('%')
-three_month_converted_real_estate = float("".join(mm))
-
-nn = list(YTD['Real Estate'])
-nn.remove('%')
-YTD_converted_real_estate = float("".join(nn))
-
-#utilities variables
-oo = list(one_day['Utilities'])
-oo.remove('%')
-one_day_converted_utilities = float("".join(oo))
-
-pp = list(one_month['Utilities'])
-pp.remove('%')
-one_month_converted_utilities = float("".join(pp))
-
-qq = list(three_month['Utilities'])
-qq.remove('%')
-three_month_converted_utilities = float("".join(qq))
-
-rr = list(YTD['Utilities'])
-rr.remove('%')
-YTD_converted_utilities = float("".join(rr))
-
 trace1 = go.Bar(
     x=['1Day Perf. (%)', '1M Perf. (%)', '3M Perf. (%)', 'YTD Perf. (%)'],
-    y=[one_day_converted_comm_svcs, one_month_converted_comm_svcs, three_month_converted_comm_svcs, YTD_converted_comm_svcs],
+    y=[one_day_dict["Communication Services"], one_month_dict["Communication Services"], three_month_dict["Communication Services"], YTD["Communication Services"]],
     name='Communication Services',
     marker=dict(
         color='rgb(102, 178, 255)' #website used to find color codes: https://www.rapidtables.com/web/color/RGB_Color.html
@@ -389,7 +220,7 @@ trace1 = go.Bar(
 )
 trace2 = go.Bar(
     x=['1Day Perf. (%)', '1M Perf. (%)', '3M Perf. (%)', 'YTD Perf. (%)'],
-    y=[one_day_converted_CD, one_month_converted_CD, three_month_converted_CD, YTD_converted_CD],
+    y=[one_day_dict["Consumer Discretionary"], one_month_dict["Consumer Discretionary"], three_month_dict["Consumer Discretionary"], YTD_dict["Consumer Discretionary"]],
     name='Consumer Discretionary',
     marker=dict(
         color='rgb(127, 0, 255)'
@@ -398,7 +229,7 @@ trace2 = go.Bar(
 
 trace3 = go.Bar(
     x=['1Day Perf. (%)', '1M Perf. (%)', '3M Perf. (%)', 'YTD Perf. (%)'],
-    y=[one_day_converted_cons_staples, one_month_converted_cons_staples, three_month_converted_cons_staples, YTD_converted_cons_staples],
+    y=[one_day_dict["Consumer Staples"], one_month_dict["Consumer Staples"], three_month_dict["Consumer Staples"], YTD_dict["Consumer Staples"]],
     name='Consumer Staples',
     marker=dict(
         color='rgb(255, 153, 255)'
@@ -407,7 +238,7 @@ trace3 = go.Bar(
 
 trace4 = go.Bar(
     x=['1Day Perf. (%)', '1M Perf. (%)', '3M Perf. (%)', 'YTD Perf. (%)'],
-    y=[one_day_converted_financials, one_month_converted_financials, three_month_converted_financials, YTD_converted_financials],
+    y=[one_day_dict["Financials"], one_month_dict["Financials"], three_month_dict["Financials"], YTD_dict["Financials"]],
     name='Financials',
     marker=dict(
         color='rgb(0, 255, 128)'
@@ -416,7 +247,7 @@ trace4 = go.Bar(
 
 trace5 = go.Bar(
     x=['1Day Perf. (%)', '1M Perf. (%)', '3M Perf. (%)', 'YTD Perf. (%)'],
-    y=[one_day_converted_energy, one_month_converted_energy, three_month_converted_energy, YTD_converted_energy],
+    y=[one_day_dict["Energy"], one_month_dict["Energy"], three_month_dict["Energy"], YTD_dict["Energy"]],
     name='Energy',
     marker=dict(
         color='rgb(255, 0, 0)'
@@ -425,7 +256,7 @@ trace5 = go.Bar(
 
 trace6 = go.Bar(
     x=['1Day Perf. (%)', '1M Perf. (%)', '3M Perf. (%)', 'YTD Perf. (%)'],
-    y=[one_day_converted_health_care, one_month_converted_health_care, three_month_converted_health_care, YTD_converted_health_care],
+    y=[one_day_dict["Health Care"], one_month_dict["Health Care"], three_month_dict["Health Care"], YTD_dict["Health Care"]],
     name='Health Care',
     marker=dict(
         color='rgb(241, 255, 28)'
@@ -434,7 +265,7 @@ trace6 = go.Bar(
 
 trace7 = go.Bar(
     x=['1Day Perf. (%)', '1M Perf. (%)', '3M Perf. (%)', 'YTD Perf. (%)'],
-    y=[one_day_converted_industrials, one_month_converted_industrials, three_month_converted_industrials, YTD_converted_industrials],
+    y=[one_day_dict["Industrials"], one_month_dict["Industrials"], three_month_dict["Industrials"], YTD_dict["Industrials"]],
     name='Industrials',
     marker=dict(
         color='rgb(192, 192, 192)'
@@ -443,7 +274,7 @@ trace7 = go.Bar(
 
 trace8 = go.Bar(
     x=['1Day Perf. (%)', '1M Perf. (%)', '3M Perf. (%)', 'YTD Perf. (%)'],
-    y=[one_day_converted_IT, one_month_converted_IT, three_month_converted_IT, YTD_converted_IT],
+    y=[one_day_dict["Information Technology"], one_month_dict["Information Technology"], three_month_dict["Information Technology"], YTD_dict["Information Technology"]],
     name='Information Technology',
     marker=dict(
         color='rgb(62, 17, 239)'
@@ -452,7 +283,7 @@ trace8 = go.Bar(
 
 trace9 = go.Bar(
     x=['1Day Perf. (%)', '1M Perf. (%)', '3M Perf. (%)', 'YTD Perf. (%)'],
-    y=[one_day_converted_materials, one_month_converted_materials, three_month_converted_materials, YTD_converted_materials],
+    y=[one_day_dict["Materials"], one_month_dict["Materials"], three_month_dict["Materials"], YTD_dict["Materials"]],
     name='Materials',
     marker=dict(
         color='rgb(255, 153, 51)'
@@ -461,7 +292,7 @@ trace9 = go.Bar(
 
 trace10 = go.Bar(
     x=['1Day Perf. (%)', '1M Perf. (%)', '3M Perf. (%)', 'YTD Perf. (%)'],
-    y=[one_day_converted_real_estate, one_month_converted_real_estate, three_month_converted_real_estate, YTD_converted_real_estate],
+    y=[one_day_dict["Real Estate"], one_month_dict["Real Estate"], three_month_dict["Real Estate"], YTD_dict["Real Estate"]],
     name='Real Estate',
     marker=dict(
         color='rgb(26, 118, 255)'
@@ -470,7 +301,7 @@ trace10 = go.Bar(
 
 trace11 = go.Bar(
     x=['1Day Perf. (%)', '1M Perf. (%)', '3M Perf. (%)', 'YTD Perf. (%)'],
-    y=[one_day_converted_utilities, one_month_converted_utilities, three_month_converted_utilities, YTD_converted_utilities],
+    y=[one_day_dict["Utilities"], one_month_dict["Utilities"], three_month_dict["Utilities"], YTD_dict["Utilities"]],
     name='Utilities',
     marker=dict(
         color='rgb(96, 96, 96)'
