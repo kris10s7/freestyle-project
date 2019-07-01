@@ -160,7 +160,7 @@ data = [trace]
 
 layout = go.Layout(
     title=go.layout.Title(
-        text=f'{symbol} Candlestick Chart',
+        text=f'{symbol} Candlestick Chart as of ' + str(last_refreshed),
         xref='paper',
         x=0
     ),
@@ -170,7 +170,7 @@ fig = go.Figure(data=data, layout=layout)
 candlestick_filepath = os.path.join(os.path.dirname(__file__), "..", "chart", "candlestick.html")
 plotly.offline.plot(fig, filename='candlestick.html')
 
-print(f"GENERATED CHART: {candlestick_filepath}")
+print(f"SUCCESSFULLY GENERATED CANDLESTICK CHART ({candlestick_filepath}) AND SECTOR PERFORMANCE CHART :)")
 print("-------------------------")
 
 api_key = os.environ.get("ALPHAVANTAGE_API_KEY")
@@ -384,7 +384,7 @@ trace1 = go.Bar(
     y=[one_day_converted_comm_svcs, one_month_converted_comm_svcs, three_month_converted_comm_svcs, YTD_converted_comm_svcs],
     name='Communication Services',
     marker=dict(
-        color='rgb(102, 178, 255)'
+        color='rgb(102, 178, 255)' #website used to find color codes: https://www.rapidtables.com/web/color/RGB_Color.html
     )
 )
 trace2 = go.Bar(
@@ -480,7 +480,7 @@ trace11 = go.Bar(
 
 data = [trace1, trace2, trace3, trace4, trace5, trace6, trace7, trace8, trace9, trace10, trace11]
 layout = go.Layout(
-    title='Sector Performance Chart',
+    title='Sector Performance Chart as of '+ str(last_refreshed),
     xaxis=dict(
         tickfont=dict(
             size=14,
